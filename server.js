@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const PORT = process.env.PORT || 3001;
 
-// const db = require("./models");
+const List = require("./models/listModel");
 const app = express();
 
 app.use(morgan("dev"));
@@ -20,6 +20,12 @@ app.get("/", (req, res) => {
     res.render("main.ejs", {
         name:"jean"
     })
+})
+app.get("/list", (req,res) => {
+    List.find({})
+        .then(ne => {
+            res.json(ne)
+        })
 })
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
