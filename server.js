@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const PORT = process.env.PORT || 3001;
 
-const List = require("./models/listModel");
+const Items = require("./models/listModel");
 const app = express();
 
 app.use(morgan("dev"));
@@ -22,9 +22,11 @@ app.get("/", (req, res) => {
     })
 })
 app.get("/list", (req,res) => {
-    List.find({})
-        .then(ne => {
-            res.json(ne)
+    Items.find()
+        .then(item => {
+            res.render("list.ejs", {
+                item
+            })
         })
 })
 

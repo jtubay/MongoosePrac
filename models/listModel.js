@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ListSchema = new Schema({
-    item: {
+const ItemsSchema = new Schema({
+    name: {
         type: String,
         trim: true,
         required:"is required"
@@ -13,5 +13,5 @@ const ListSchema = new Schema({
     }
 })
 
-const List = mongoose.model("List", ListSchema)
-module.exports = List;
+const Items = mongoose.model("Items", ItemsSchema)
+module.exports = Items;
